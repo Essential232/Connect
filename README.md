@@ -25,3 +25,7 @@ const channelConfig = {
 ```
 
 Add the Scaledrone client and room subscription there, then connect the join form to your WebRTC signaling flow. GitHub Pages serves over HTTPS, which is required by browser camera and microphone permissions.
+
+## Share a call
+
+Enter a room name and select **Copy invite link**. The generated URL includes the room as a `room` query parameter, so anyone opening it on the deployed GitHub Pages site will see the same room prefilled. The Scaledrone/WebRTC connection still needs to be wired into the join action.

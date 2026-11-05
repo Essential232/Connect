@@ -7,12 +7,28 @@ const previewMessage = document.querySelector('#previewMessage');
 const cameraToggle = document.querySelector('#cameraToggle');
 const micToggle = document.querySelector('#micToggle');
 const copyRoom = document.querySelector('#copyRoom');
+const copyInvite = document.querySelector('#copyInvite');
+
+const roomFromUrl = new URLSearchParams(window.location.search).get('room');
+if (roomFromUrl) roomInput.value = roomFromUrl;
 
 // Add your Scaledrone client and room subscription here when wiring the call layer.
 const channelConfig = {
   roomName: roomInput.value,
   scaledroneChannel: '2GjuFGfVv6adrPZw'
 };
+
+function getInviteUrl() {
+  const inviteUrl = new URL(window.location.href);
+  inviteUrl.search = '';
+  inviteUrl.searchParams.set('room', roomInput.value.trim());
+  return inviteUrl.toString();
+}
+
+function syncRoomUrl() {
+  const inviteUrl = getInviteUrl();
+  window.history.replaceState({}, '', inviteUrl);
+}
 
 function setPreviewState(isCameraOn) {
   cameraToggle.classList.toggle('is-off', !isCameraOn);
@@ -55,8 +71,24 @@ copyRoom.addEventListener('click', async () => {
   }
 });
 
+copyInvite.addEventListener('click', async () => {
+  if (!roomInput.value.trim()) return;
+
+  syncRoomUrl();
+  try {
+    await navigator.clipboard.writeText(getInviteUrl());
+    copyInvite.querySelector('span').textContent = 'Invite link copied';
+    setTimeout(() => {
+      copyInvite.querySelector('span').textContent = 'Copy invite link';
+    }, 1600);
+  } catch {
+    formNote.textContent = 'Invite link ready in your address bar. Press Ctrl+C to copy it.';
+  }
+});
+
 roomInput.addEventListener('input', () => {
   channelConfig.roomName = roomInput.value.trim();
+  syncRoomUrl();
 });
 
 joinForm.addEventListener('submit', (event) => {
