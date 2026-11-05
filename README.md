@@ -20,7 +20,7 @@ The placeholder is in `app.js`:
 ```js
 const channelConfig = {
   roomName: roomInput.value,
-  scaledroneChannel: ''
+  scaledroneChannel: "",
 };
 ```
 

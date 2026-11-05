@@ -11,7 +11,7 @@ const copyRoom = document.querySelector('#copyRoom');
 // Add your Scaledrone client and room subscription here when wiring the call layer.
 const channelConfig = {
   roomName: roomInput.value,
-  scaledroneChannel: ''
+  scaledroneChannel: '2GjuFGfVv6adrPZw'
 };
 
 function setPreviewState(isCameraOn) {
