@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101c22" />
+    <title>Relay | Video calls, without the noise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="brand" href="." aria-label="Relay home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>relay</span>
+        </a>
+        <div class="topbar-meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Private by default</span>
+          <button class="help-button" type="button" title="Open help" aria-label="Open help">?</button>
+        </div>
+      </nav>
+
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="intro">
+          <p class="eyebrow"><span></span> Your quiet room for better conversations</p>
+          <h1 id="page-title">Make space<br /><em>to connect.</em></h1>
+          <p class="intro-copy">A focused video room for the conversations that deserve your full attention.</p>
+          <div class="trust-row">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar avatar-one">A</span>
+              <span class="avatar avatar-two">M</span>
+              <span class="avatar avatar-three">J</span>
+              <span class="avatar avatar-four">+</span>
+            </div>
+            <span>Trusted for 1:1s, standups, and big ideas</span>
+          </div>
+        </div>
+
+        <div class="call-card" aria-label="Join a call">
+          <div class="card-head">
+            <div>
+              <p class="section-label">Ready when you are</p>
+              <h2>Join your room</h2>
+            </div>
+            <span class="secure-badge"><span aria-hidden="true">&#10003;</span> Encrypted</span>
+          </div>
+
+          <div class="preview" id="preview" aria-label="Camera preview">
+            <div class="preview-noise"></div>
+            <div class="preview-content">
+              <div class="preview-avatar" id="previewAvatar">Y</div>
+              <p id="previewMessage">Camera preview is off</p>
+            </div>
+            <div class="preview-label"><span class="live-dot"></span> You</div>
+            <div class="preview-controls" aria-label="Preview controls">
+              <button class="round-control is-off" id="cameraToggle" type="button" aria-pressed="false" title="Turn camera on"><span class="camera-icon" aria-hidden="true"></span><span class="sr-only">Turn camera on</span></button>
+              <button class="round-control" id="micToggle" type="button" aria-pressed="true" title="Mute microphone"><span class="mic-icon" aria-hidden="true"></span><span class="sr-only">Mute microphone</span></button>
+            </div>
+          </div>
+
+          <form id="joinForm" class="join-form">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="How should people call you?" autocomplete="name" required />
+
+            <label for="room">Room name</label>
+            <div class="room-input-wrap">
+              <input id="room" name="room" type="text" value="morning-ideas" autocomplete="off" required />
+              <button id="copyRoom" class="copy-button" type="button" title="Copy room name" aria-label="Copy room name">&#10697;</button>
+            </div>
+
+            <button class="join-button" type="submit"><span>Enter the room</span><span class="arrow" aria-hidden="true">&#8594;</span></button>
+            <p class="form-note" id="formNote">No account needed. Share the room name with your people.</p>
+          </form>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>relay / 2026</span>
+        <span class="footer-line" aria-hidden="true"></span>
+        <span>Simple tools for meaningful work</span>
+      </footer>
+    </main>
+  </body>
+</html>
